@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+html, body {
+	height: 100%;
+	background: #fff;
+	font-size: 14px;
+}
+
+.header {
+	text-align: center;
+	background-color: #fff;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+	box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.07);
+	margin-bottom: -1px;
+}
+
+.logo {
+	font-family: 'Kaushan Script', cursive;
+	color: #3c8dbc;
+}
+a {
+	color: #000;
+}
+
+a:hover, a:active, a:focus {
+	outline: none;
+	text-decoration: none;
+	color: #72afd2;
+}
+
+.navbar {
+	margin-bottom: 0px;
+	border: none;
+}
+
+.navbarActive{
+	font:20px bold;
+	color:#3c8dbc;
+}
+
+.pjax-container{
+	margin-top: 20px;
+}

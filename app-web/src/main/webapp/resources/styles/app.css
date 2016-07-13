@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+html, body {
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	font: normal "Microsoft YaHei" ! important 14px;
+}
+
+.containerLayout {
+	display: flex;
+	flex-flow: row;
+	height: 100%;
+}
+
+.sidebar {
+	width: 300px;
+	background: #E8EDF1;
+	border-right: 1px solid #D1D5D9;
+	display: flex;
+	flex-flow: column;
+}
+.sidebarNav ul,li{
+	margin:0px;
+	padding:0px;
+	text-align:center;
+	list-style: none;
+}
+a.navLink:hover{
+	background:#DDD;
+	margin-right: -1px;
+}
+a.navLink:focus{
+	background: white;
+	margin-right: -1px;
+}
+
+.sidebarNav ul li a{
+	padding:20px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+.sidebarTop {
+	height: 150px;
+}
+
+.sidebarNav {
+	flex: 1;
+}
+
+.content {
+	width: 100%;
+	flex: 1;
+}
+
+.list-group-item {
+	padding: 18px 15px;
+	background: none;
+	border: none;
+}
