@@ -1,45 +1,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
 <title>Template</title>
-<c:if test="${renderHeader}">
-	
-		<header class="header">
-			<nav class="navbar">
-				<div class="container">
-					<div class="navbar-header">
-						<a href="${contextPath}/index" class="navbar-brand logo" data-pjax>Template</a>
-					</div>
-					<div>
-						<ul class="nav navbar-nav">
-							<li><a href="${contextPath}/index" data-pjax>首页</a></li>
-							<li><a href="${contextPath}/add" data-pjax>分表</a></li>
-	<%-- 						<li><a href="${contextPath}/qiniu/index" data-pjax>多库</a></li> --%>
-	<%-- 						<li><a href="${contextPath}/qiniu/index" data-pjax>多库多表</a></li> --%>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
-	
-	<script type="text/javascript">
-		$(function(){
-			$(document).pjax("a[data-pjax]","#pjax-container",{fragment:"#pjax-container"});
-			$(document).on('pjax:start', function() { NProgress.start();});
-			$(document).on('pjax:end',   function() { NProgress.done();});
-			
-			//设置当前页的选中效果
-			var pathName = window.location.pathname;
-			$(".navbar-nav li a[data-pjax]").each(function(i, element) {
-				if($(element).attr("href") == pathName){
-					$(element).addClass("navbarActive");
-					return;
-				}
-			});
-			//导航选中效果
-			$(".navbar-nav li a").bind("click",function(){
-				$(".navbarActive").removeClass("navbarActive");
-				$(this).addClass("navbarActive");
-			});
-		});
+<link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+<link href="${contextPath}/resources/styles/style.css" rel="stylesheet">
+
+<script type="text/javascript">
+	var appPath = "${contextPath}";
 </script>
+<script data-main="${contextPath}/resources/scripts/app" 
+		src="${contextPath}/resources/scripts/lib/require.min.js"></script>
+<c:if test="${renderHeader}">
+	<header class="header">
+		<nav class="navbar">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="${contextPath}/index" class="navbar-brand logo" data-pjax>Template</a>
+				</div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li><a href="${contextPath}/index" data-pjax>首页</a></li>
+						<li><a href="${contextPath}/sharding/splitTable" data-pjax>分表</a></li>
+<%-- 						<li><a href="${contextPath}/qiniu/index" data-pjax>多库</a></li> --%>
+<%-- 						<li><a href="${contextPath}/qiniu/index" data-pjax>多库多表</a></li> --%>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
 </c:if>
