@@ -7,7 +7,9 @@ public class AjaxDataResult {
 	private Object data;
 	
 	public AjaxDataResult(String code,String message,Object data){
-		
+		this.code = code;
+		this.message = message;
+		this.data = data;
 	}
 	public static AjaxDataResult success(Object data){
 		return new AjaxDataResult(AjaxDataResult.SUCCESS, null, data);

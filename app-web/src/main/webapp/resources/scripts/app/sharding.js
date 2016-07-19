@@ -1,8 +1,9 @@
-define("sharding",[],function(){
+define(["jquery","ajax"],function($,ajax){
 	return {
-		initDataBase:function(){
-			alert("123");
+		initDataBase:function(power,callBack){
+			ajax.jsonAjax(appPath + "/sharding/initData/" + power,null,function(data){
+				callBack(data);
+			});
 		}
-		
 	}
 });

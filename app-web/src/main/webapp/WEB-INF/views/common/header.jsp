@@ -2,18 +2,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
-<title>Template</title>
-<link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-<link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-<link href="${contextPath}/resources/styles/style.css" rel="stylesheet">
 
-<script type="text/javascript">
-	var appPath = "${contextPath}";
-</script>
-<script data-main="${contextPath}/resources/scripts/app" 
-		src="${contextPath}/resources/scripts/lib/require.min.js"></script>
 <c:if test="${renderHeader}">
+	<title>Template</title>
+	<link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+	<link href="${contextPath}/resources/styles/style.css" rel="stylesheet">
+	<script src="${contextPath}/resources/scripts/lib/require.min.js"></script>
+	<script type="text/javascript">
+		var appPath = "${contextPath}";
+		requirejs.config({
+		    baseUrl: appPath + "/resources/scripts/app",
+		    paths:{
+		    	"jquery":"../lib/jquery.min",
+		    	"bootstrap":"../lib/bootstrap.min",
+		    	"pjax":"../lib/jquery.pjax.min",
+		    	"NProgress":"../lib/nprogress.min"
+// 		    	"json":"../lib/json2.min"
+		    },
+		    shim:{
+		    	pjax:["jquery"]
+		    }
+		});
+		require(["header"],function($){});
+	</script>
 	<header class="header">
 		<nav class="navbar">
 			<div class="container">

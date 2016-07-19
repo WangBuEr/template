@@ -10,8 +10,14 @@
 					<div class="input-group">  
 						<input type="text" class="form-control" placeholder="数据仓储为2^X的数据填充，数据产生的方式为Twitter-Snowflake">
 						<span class="input-group-btn">  
-		                    <button type="button" class="btn btn-primary">初始化</button>
+		                    <button id="initDataBtn" type="button" class="btn btn-primary">初始化</button>
 		                </span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div id="rawDataDiv" class="collapse" >
+					  	adfsdf
 					</div>
 				</div>
 			</fieldset>
@@ -44,6 +50,12 @@
 </div>
 <script type="text/javascript">
 	require(["sharding"],function(sharding){
-		sharding.initDataBase();
+		$("#initDataBtn").on("click",function(){
+			$(this).text("初始化中...").attr("disabled",true);
+			sharding.initDataBase(6,function(rawData){
+				$("#rawDataDiv").text(rawData.allData.join(","));
+			});
+		});
+		
 	});
 </script>
