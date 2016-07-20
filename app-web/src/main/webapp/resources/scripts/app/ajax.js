@@ -1,12 +1,12 @@
 define(["jquery"],function($){
 	return {
-		jsonAjax:function(url,data,successCallBack,errorCallBack){
+		jsonAjax:function(url,param,successCallBack,errorCallBack){
 			var result = null;
 			$.ajax({
 				url:url,
 				method:"post",
-				data:data,
-				dataType:"JSON",
+				data:param,
+				dataType:"json",
 				async:true,
 				cache:false,
 				success:function(data){

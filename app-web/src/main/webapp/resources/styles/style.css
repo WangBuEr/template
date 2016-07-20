@@ -46,3 +46,10 @@ a:hover, a:active, a:focus {
 .pjax-container{
 	margin-top: 20px;
 }
+.word-wrap{
+	word-break:break-all; /*支持IE，chrome，FF不支持*/
+	word-wrap:break-word;/*支持IE，chrome，FF*/
+}
+.center{
+	text-align: center;
+}

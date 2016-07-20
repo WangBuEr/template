@@ -23,7 +23,7 @@ public class Table implements Serializable {
 		dataList.add(data);
 	}
 	
-	public List<Object> getAllData(){
+	public List<Object> getDataList(){
 		return dataList;
 	}
 	public Object getData(Object data){

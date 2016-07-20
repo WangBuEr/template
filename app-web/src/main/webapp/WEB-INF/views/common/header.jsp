@@ -19,13 +19,13 @@
 		    	"bootstrap":"../lib/bootstrap.min",
 		    	"pjax":"../lib/jquery.pjax.min",
 		    	"NProgress":"../lib/nprogress.min"
-// 		    	"json":"../lib/json2.min"
 		    },
 		    shim:{
-		    	pjax:["jquery"]
+		    	pjax:["jquery"],
+		    	bootstrap:["jquery"]
 		    }
 		});
-		require(["header"],function($){});
+		require(["header","bootstrap"],function($){});
 	</script>
 	<header class="header">
 		<nav class="navbar">

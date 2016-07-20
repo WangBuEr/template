@@ -27,5 +27,5 @@ public interface ShardingService {
 	 * @param data 需要验证的数据
 	 * @return 数据所在的分表及当前查询到的数据
 	 */
-	Table validationData(Object data);
+	Table validationData(String data);
 }

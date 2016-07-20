@@ -24,5 +24,14 @@ public class ShardingController {
 	public AjaxDataResult initData(@PathVariable("pow")Integer pow){
 		return AjaxDataResult.success(splitTableService.initData(pow));
 	}
-	
+	@RequestMapping("splitTable/{splitTableNum}")
+	@ResponseBody
+	public AjaxDataResult splitTable(@PathVariable("splitTableNum")Integer splitSum){
+		return AjaxDataResult.success(splitTableService.splitTable(splitSum));
+	}
+	@RequestMapping("validationData/{data}")
+	@ResponseBody
+	public AjaxDataResult validationData(@PathVariable("data")String data){
+		return AjaxDataResult.success(splitTableService.validationData(data));
+	}
 }

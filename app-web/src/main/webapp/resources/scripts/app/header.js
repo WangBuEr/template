@@ -1,6 +1,6 @@
 define(["jquery","NProgress","pjax"],function($,NProgress,pjax){
 	$(function(){
-		$(document).pjax("a[data-pjax]","#pjax-container",{fragment:"#pjax-container"});
+		$(document).pjax("a[data-pjax]","#pjax-container",{fragment:"#pjax-container",cache:false});
 		$(document).on('pjax:start', function() { NProgress.start();});
 		$(document).on('pjax:end',   function() { NProgress.done();});
 		//设置当前页的选中效果

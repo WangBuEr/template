@@ -22,7 +22,7 @@ public class ShardingServiceImpl implements ShardingService {
 	}
 
 	@Override
-	public Table validationData(Object data) {
+	public Table validationData(String data) {
 		return dataBase.queryData(data);
 	}
 

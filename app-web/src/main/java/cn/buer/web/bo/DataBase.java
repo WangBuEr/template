@@ -39,7 +39,9 @@ public class DataBase implements Serializable{
 		Table table = dataBase.createTable(Table.RAW_TALBE_NAME);
 		IdWorker idWorker = new IdWorker(0, 0);
 		for(int i = 0; i < dataSum; i++){
-			table.add(idWorker.nextId());
+			//TODO 由Java的64位的long型传到页面再传到后台使用，结果达到上限，java的long不能用javascript的number表示出上限，需要用string代替来传值，否则会丧失精度
+//			table.add(idWorker.nextId());
+			table.add(String.valueOf(idWorker.nextId()));
 		}
 		return dataBase;
 	}
@@ -52,16 +54,16 @@ public class DataBase implements Serializable{
 	public List<Table> split(int splitTableNum){
 		this.splitTableNum = splitTableNum;
 		List<Table> result = new ArrayList<>();
-		for(int i=0; i<splitTableNum; i++ ){
+		for(int i = 0; i < splitTableNum; i++ ){
 			Table table = this.createTable(Table.RAW_TALBE_NAME + "_" + i);
 			result.add(table);
 		}
 		Table rawTalbe = this.getTable(Table.RAW_TALBE_NAME);
-		List<Object> dataList = rawTalbe.getAllData();
+		List<Object> dataList = rawTalbe.getDataList();
 		for(Object data : dataList){
 			StringBuilder targetTableName = new StringBuilder(Table.RAW_TALBE_NAME);
 			targetTableName.append("_");
-			int tableIndex = (int) ((long)data%splitTableNum);
+			int tableIndex = (int) (Long.valueOf((String)data)%splitTableNum);
 			targetTableName.append(tableIndex);
 			Table targetTable = this.getTable(targetTableName.toString());
 			targetTable.add(data);
@@ -74,10 +76,15 @@ public class DataBase implements Serializable{
 	 * @param data
 	 * @return
 	 */
-	public Table queryData(Object data){
+	public Table queryData(String data){
 		StringBuilder targetTableName = new StringBuilder(Table.RAW_TALBE_NAME);
 		targetTableName.append("_");
-		int tableIndex = (int) ((long)data%splitTableNum);
+		int tableIndex;
+		try {
+			tableIndex = (int) (Long.valueOf(data)%splitTableNum);
+		} catch (NumberFormatException e) {
+			return null;
+		}
 		targetTableName.append(tableIndex);
 		Table table = this.getTable(targetTableName.toString());
 		if (table != null && table.getData(data) != null) {
