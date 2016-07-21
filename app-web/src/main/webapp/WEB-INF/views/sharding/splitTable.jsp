@@ -8,10 +8,18 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">数据仓储：</label>
 					<div class="input-group">  
-						<input id="power" type="text" class="form-control" placeholder="数据仓储为2^X的数据填充，数据产生的方式为Twitter-Snowflake">
+						<input id="power" name="power" type="text" class="form-control" placeholder="数据仓储为2^X的数据填充，数据产生的方式为Twitter-Snowflake,值为1~12"
+						 	data-bv-notempty data-bv-notempty-message="不能为空">
 						<span class="input-group-btn">  
 		                    <button id="initDataBtn" type="button" data-toggle="collapse" data-target="rawDataPanel" class="btn btn-primary">初始化</button>
 		                </span>
+					</div>
+				</div>
+<!-- 				错误提示 -->
+				<div class="form-group">
+					<label class="col-sm-2 control-label">&nbsp;</label>
+					<div class="input-group">  
+						<span id="powerError"></span>
 					</div>
 				</div>
 				<div class="form-group">
@@ -26,13 +34,19 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">分表数量：</label>
 					<div class="input-group">  
-						<input id="splitTableNum" type="text" class="form-control" placeholder="分表数量" disabled="disabled">
+						<input id="splitTableNum" name="splitTableNum" disabled="disabled" type="text" class="form-control" placeholder="分表数量,值为1~10" >
 						 <span class="input-group-btn">  
 		                    <button id="splitTableBtn" type="button"  class="btn btn-primary" disabled="disabled" >分　表</button>
 		                </span>
 					</div>
 				</div>
-				
+				<!-- 				错误提示 -->
+				<div class="form-group">
+					<label class="col-sm-2 control-label">&nbsp;</label>
+					<div class="input-group">  
+						<span id="splitTableNumError"></span>
+					</div>
+				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">&nbsp;</label>
 					<div class="col-sm-10" id="tableList" style="padding:0px;">
@@ -57,7 +71,6 @@
 					<div class="panel panel-default col-sm-10">
 						<div id="searchResultPanel" class="panel-body hide center"></div>
 					</div>
-					
 				</div>
 			</fieldset>
 		</form>

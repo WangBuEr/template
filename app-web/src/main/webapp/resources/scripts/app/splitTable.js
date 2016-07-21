@@ -1,8 +1,20 @@
-define(["sharding","pjax"],function(sharding){
+define(["sharding","bootstrap","bootstrapValidator"],function(sharding){
 	return {
 		initPage:function(){
+			this.bindInitData();
+			this.bindSplitTable();
+			this.bindSearch();
+			this.bindValidator();
+		},
+		bindInitData:function(){
 			//初始化数据仓储事件绑定
 			$("#initDataBtn").on("click",function(){
+				//验证
+				var isValid = $("form").data('bootstrapValidator').validateField("power").isValid();
+				console.info(isValid);
+				if(!isValid){
+					return;
+				}
 				var power = $("#power").val();
 				$(this).text("初始化中...").attr("disabled",true);
 				//禁用数据仓库输入框
@@ -28,8 +40,15 @@ define(["sharding","pjax"],function(sharding){
 					$("#splitTableBtn").attr("disabled",false);
 				});
 			});
+		},
+		bindSplitTable:function(){
 			//分表事件绑定
 			$("#splitTableBtn").bind("click",function(){
+				//验证
+				var isValid = $("form").data('bootstrapValidator').validateField("splitTableNum").isValid();
+				if(!isValid){
+					return;
+				}
 				var splitTableNum = $("#splitTableNum").val();
 				$(this).text("分表中...").attr("disabled",true);
 				sharding.splitTable(splitTableNum, function(splitTableList) {
@@ -69,6 +88,8 @@ define(["sharding","pjax"],function(sharding){
 					$("#searchBtn").attr("disabled",false);
 				});
 			});
+		},
+		bindSearch:function(){
 			//验证查询事件绑定
 			$("#searchBtn").bind("click",function(){
 				var data = $("#searchInput").val();
@@ -82,6 +103,44 @@ define(["sharding","pjax"],function(sharding){
 					$("#searchResultPanel").removeClass("hide").addClass("show");
 					$("#searchBtn").text("查询").attr("disabled",false);
 				});
+			});
+		},
+		bindValidator:function(){
+			$("form").bootstrapValidator({
+				fields:{
+					power:{
+						container:"#powerError",
+						validators: {
+							notEmpty:{
+								message:"不能为空"
+							},
+							integer:{
+								message:"只能为数字"
+							},
+							between: {
+		                        min: 8,
+		                        max: 12,
+		                        message: '必须在1~12之间'
+		                    }
+						}
+					},
+					splitTableNum:{
+						container:"#splitTableNumError",
+						validators: {
+							notEmpty:{
+								message:"不能为空"
+							},
+							integer:{
+								message:"只能为数字"
+							},
+							between: {
+		                        min: 8,
+		                        max: 12,
+		                        message: '必须在1~10之间'
+		                    }
+						}
+					}
+				}
 			});
 		}
 	}

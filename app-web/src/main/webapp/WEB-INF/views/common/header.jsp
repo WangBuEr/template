@@ -8,6 +8,7 @@
 	<link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+	<link href="${contextPath}/resources/styles/lib/bootstrapValidator.min.css" rel="stylesheet">
 	<link href="${contextPath}/resources/styles/style.css" rel="stylesheet">
 	<script src="${contextPath}/resources/scripts/lib/require.min.js"></script>
 	<script type="text/javascript">
@@ -16,14 +17,27 @@
 		    baseUrl: appPath + "/resources/scripts/app",
 		    paths:{
 		    	"jquery":"../lib/jquery.min",
-		    	"bootstrap":"../lib/bootstrap.min",
+		    	"bootstrap":"../lib/bootstarp/bootstrap.min",
+		    	"bootstrapValidator":"../lib/bootstarp/validator/bootstrapValidator.min",
 		    	"pjax":"../lib/jquery.pjax.min",
 		    	"NProgress":"../lib/nprogress.min"
 		    },
 		    shim:{
-		    	pjax:["jquery"],
-		    	bootstrap:["jquery"]
-		    }
+		    	"pjax":{
+		    		deps:["jquery"],
+		    		exports:"$.fn.pjax"
+		    	},
+		    	"bootstrap": {
+		            deps: ["jquery"],
+		            exports: "$.fn"
+		        },
+		        "bootstrapValidator":{
+		        	deps: ["jquery","bootstrap"],
+		        	exports: "$.fn"
+		        }
+		        
+		    },
+		    enforceDefine: true
 		});
 		require(["header","bootstrap"],function($){});
 	</script>
