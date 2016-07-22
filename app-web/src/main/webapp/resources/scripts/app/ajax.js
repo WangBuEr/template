@@ -1,4 +1,4 @@
-define(["jquery"],function($){
+define(["jquery","tipsModal"],function($,modal){
 	return {
 		jsonAjax:function(url,param,successCallBack,errorCallBack){
 			var result = null;
@@ -14,6 +14,14 @@ define(["jquery"],function($){
 						successCallBack(data.data);
 					}else if(errorCallBack){
 						errorCallBack(data);
+					}else{
+						var body = null;
+						if(data.code == "10001"){
+							body = data.message?data.message:"服务器开会小差，请稍后重试！";
+						}else if(data.code = "10002"){
+							body = data.message?data.message:"非法参数！";
+						}
+						modal.errorOpen(body);
 					}
 				},
 				error:function(req, textStatus, errorThrown){

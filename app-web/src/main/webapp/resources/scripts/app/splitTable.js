@@ -11,7 +11,6 @@ define(["sharding","bootstrap","bootstrapValidator"],function(sharding){
 			$("#initDataBtn").on("click",function(){
 				//验证
 				var isValid = $("form").data('bootstrapValidator').validateField("power").isValid();
-				console.info(isValid);
 				if(!isValid){
 					return;
 				}
@@ -118,7 +117,7 @@ define(["sharding","bootstrap","bootstrapValidator"],function(sharding){
 								message:"只能为数字"
 							},
 							between: {
-		                        min: 8,
+		                        min: 1,
 		                        max: 12,
 		                        message: '必须在1~12之间'
 		                    }
@@ -134,7 +133,7 @@ define(["sharding","bootstrap","bootstrapValidator"],function(sharding){
 								message:"只能为数字"
 							},
 							between: {
-		                        min: 8,
+		                        min: 1,
 		                        max: 12,
 		                        message: '必须在1~10之间'
 		                    }

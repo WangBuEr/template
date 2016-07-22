@@ -3,6 +3,7 @@ package cn.buer.web.vo;
 public class AjaxDataResult {
 	private static final String SUCCESS = "10000";
 	private static final String ERROR_SERVER = "10001";
+	private static final String ERROR_PARAM = "10002";
 	private String code;
 	private String message;
 	private Object data;
@@ -22,6 +23,12 @@ public class AjaxDataResult {
 	}
 	public static AjaxDataResult serverError(String message){
 		return new AjaxDataResult(AjaxDataResult.ERROR_SERVER, message, null);
+	}
+	public static AjaxDataResult paramError(String message,Object data){
+		return new AjaxDataResult(AjaxDataResult.ERROR_PARAM, message, data);
+	}
+	public static AjaxDataResult paramError(String message){
+		return new AjaxDataResult(AjaxDataResult.ERROR_PARAM, message, null);
 	}
 	public String getCode() {
 		return code;

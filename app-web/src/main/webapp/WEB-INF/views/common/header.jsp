@@ -58,4 +58,6 @@
 			</div>
 		</nav>
 	</header>
+	<%@include file="./tipsModal.jsp"%>
+<%-- 	<jsp:include page="./tipsModal.jsp"></jsp:include> --%>
 </c:if>
