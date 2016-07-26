@@ -15,6 +15,10 @@ import cn.buer.web.vo.AjaxDataResult;
 public class ShardingController {
 	@Resource
 	private ShardingService splitTableService;
+	@RequestMapping("index")
+	private String index(){
+		return "/sharding/index";
+	}
 	@RequestMapping("splitTable")
 	public String splitTable(){
 		return "/sharding/splitTable";

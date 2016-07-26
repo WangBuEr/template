@@ -53,3 +53,9 @@ a:hover, a:active, a:focus {
 .center{
 	text-align: center;
 }
+.indent{
+	text-indent:2em;
+}   
+.red{
+	color:red;
+}
