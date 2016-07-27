@@ -44,7 +44,7 @@
 				示意图（<span class="lead red">分库</span>）：
 			</p>
 			<p>
-				
+				<img class="img-responsive center-block" alt="" src="${contextPath}/resources/img/sharding/verticalSharding.png">
 			</p>
 			<p class="indent">
 				垂直切分的优点：
@@ -71,11 +71,14 @@
 		<div>
 			<h3>3.2水平切分</h3>
 			<p class="indent">
-				数据的水平切分，也可以称为横向切分。简单的水平切分主要是将某个访问及其频繁的表再按照某个字段的某种规则分散到多个表中，
+				数据的水平切分，也可以称为横向切分。简单的水平切分主要是将某个访问极其频繁的表再按照某个字段的某种规则分散到多个表中，
 				每个表包含一部分数据。
 			</p>
 			<p class="indent">
 				示意图（<span class="lead red">分表</span>）：
+			</p>
+			<p>
+				<img class="img-responsive center-block" alt="" src="${contextPath}/resources/img/sharding/horizontalSharding.png">
 			</p>
 			<p>
 				
@@ -112,9 +115,71 @@
 			<p class="indent">
 				示意图（<span class="lead red">分库分表</span>）：
 			</p>
+			<p>
+				<img class="img-responsive center-block" alt="" src="${contextPath}/resources/img/sharding/shardingGroup1.png">
+			</p>
 			<p class="indent">
 				示意图（<span class="lead red">多库多表</span>）：
 			</p>
+			<p>
+				<img class="img-responsive center-block" alt="" src="${contextPath}/resources/img/sharding/shardingGroup2.png">
+			</p>
+			<p class="indent">
+				示意图（<span class="lead red">二维数组</span>）：
+			</p>
 		</div>
+	</div>
+	<div class="col-sm-12">
+		<h2>
+			4.全局主键生成策略
+		</h2>
+		<p class="indent">
+				一旦数据库被切分到多个物理结点上，我们将不能再依赖数据库自身的主键生成机制。
+				一方面，某个分区数据库自生成的ID无法保证在全局上是唯一的；
+				另一方面，应用程序在插入数据之前需要先获得ID,以便进行SQL路由。
+				目前几种可行的主键生成策略和对比详见
+				<a target="_blank" style="color: blue;" href="http://cenalulu.github.io/mysql/guid-generate/">
+					全局唯一ID生成方案对比
+				</a>
+		</p>
+	</div>
+	<div class="col-sm-12">
+		<h2>
+			5.扩容
+		</h2>
+		<p class="indent">
+				随着业务的不停的发展，数据不停的增长，原先的cluster不足以支撑现有业务，需要对cluster进行扩容。
+				扩容采用双倍扩容，不建议采用单台扩容，因为单台扩容重做数据不具备可验证性，双倍扩容会把单台的数据一拆为二，具有可验证性，
+				缩容亦如此。
+		</p>
+		<p>
+			<img class="img-responsive center-block" alt="" src="${contextPath}/resources/img/sharding/expanded.png">
+		</p>
+		<p class="indent">
+				扩容步骤：
+		</p>
+		<ul style="margin-left: 3em;">
+			<li>摘下一个slave,停同步；</li>
+			<li>对写记录增量log；</li>
+			<li>开始对静态slave做数据，一拆为二；</li>
+			<li>回放增量写入，直到追上的所有增量与原cluster保持同步；</li>
+			<li>写入切换，由原来的cluster切换到扩容之后的cluster。</li>
+		</ul>
+	</div>
+	<div class="col-sm-12">
+		<h2>
+			6.数据聚合
+		</h2>
+		<p class="indent">
+				数据聚合......
+		</p>
+	</div>
+	<div class="col-sm-12">
+		<h2>
+			7.分布式事务
+		</h2>
+		<p class="indent">
+				分布式事务......
+		</p>
 	</div>
 </div>

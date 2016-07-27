@@ -50,6 +50,7 @@
 				<div>
 					<ul class="nav navbar-nav">
 						<li><a href="${contextPath}/index" data-pjax>首页</a></li>
+						<li><a href="${contextPath}/sharding/index" data-pjax>Mysql数据分片</a></li>
 						<li><a href="${contextPath}/sharding/splitTable" data-pjax>分表</a></li>
 <%-- 						<li><a href="${contextPath}/qiniu/index" data-pjax>多库</a></li> --%>
 <%-- 						<li><a href="${contextPath}/qiniu/index" data-pjax>多库多表</a></li> --%>
