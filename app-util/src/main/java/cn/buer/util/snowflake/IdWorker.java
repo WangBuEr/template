@@ -1,5 +1,7 @@
 package cn.buer.util.snowflake;
 
+import java.math.BigDecimal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -99,6 +101,10 @@ public class IdWorker {
 		final IdWorker idWorker = new IdWorker(0, 0);
 		Long id = idWorker.nextId();
 		System.out.println("id=" + id + ",hash=" + FNVHash(String.valueOf(id)));
+		long mod = 758965818821182441L% 16;
+		
+		System.out.println(mod);
+		System.out.println(new BigDecimal(mod).divide(new BigDecimal(16/4)));
 		
 	}
 }

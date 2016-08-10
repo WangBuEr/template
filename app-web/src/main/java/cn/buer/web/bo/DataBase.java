@@ -39,7 +39,8 @@ public class DataBase implements Serializable{
 		Table table = dataBase.createTable(Table.RAW_TALBE_NAME);
 		IdWorker idWorker = new IdWorker(0, 0);
 		for(int i = 0; i < dataSum; i++){
-			//TODO 由Java的64位的long型传到页面再传到后台使用，结果达到上限，java的long不能用javascript的number表示出上限，需要用string代替来传值，否则会丧失精度
+			//TODO 由Java的64位的long型传到页面再传到后台使用，结果达到上限，java的long不能用javascript的number表示出上限，
+			//需要用string代替来传值，否则会丧失精度
 //			table.add(idWorker.nextId());
 			table.add(String.valueOf(idWorker.nextId()));
 		}

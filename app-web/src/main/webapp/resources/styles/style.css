@@ -59,3 +59,27 @@ a:hover, a:active, a:focus {
 .red{
 	color:red;
 }
+/* 七牛-文件上传 begin */
+/* 上传容器样式 */
+.uploaderContainer{
+	position: relative;
+    padding: 45px 15px 15px;
+    margin: 15px 0;
+    background-color: #fafafa;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    border-width: 1px 0;
+}
+
+#picker {
+    display: inline-block;
+    line-height: 1.428571429;
+    vertical-align: middle;
+    margin: 0 12px 0 0;
+}
+#picker .webuploader-pick {
+    padding: 6px 12px;
+    display: block;
+}
+/* 七牛-文件上传 end */

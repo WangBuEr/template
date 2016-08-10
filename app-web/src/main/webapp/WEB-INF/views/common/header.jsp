@@ -8,6 +8,7 @@
 	<link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+	<link href="${contextPath}/resources/styles/lib/webuploader.css" rel="stylesheet">
 	<link href="${contextPath}/resources/styles/lib/bootstrapValidator.min.css" rel="stylesheet">
 	<link href="${contextPath}/resources/styles/style.css" rel="stylesheet">
 	<script src="${contextPath}/resources/scripts/lib/require.min.js"></script>
@@ -20,7 +21,8 @@
 		    	"bootstrap":"../lib/bootstarp/bootstrap.min",
 		    	"bootstrapValidator":"../lib/bootstarp/validator/bootstrapValidator.min",
 		    	"pjax":"../lib/jquery.pjax.min",
-		    	"NProgress":"../lib/nprogress.min"
+		    	"NProgress":"../lib/nprogress.min",
+		    	"webuploader":"../lib/webuploader.min"
 		    },
 		    shim:{
 		    	"pjax":{
@@ -50,6 +52,7 @@
 				<div>
 					<ul class="nav navbar-nav">
 						<li><a href="${contextPath}/index" data-pjax>首页</a></li>
+<%-- 						<li><a href="${contextPath}/qiniu/index" data-pjax>七牛</a></li> --%>
 						<li><a href="${contextPath}/sharding/index" data-pjax>Mysql数据分片</a></li>
 						<li><a href="${contextPath}/sharding/splitTable" data-pjax>分表</a></li>
 <%-- 						<li><a href="${contextPath}/qiniu/index" data-pjax>多库</a></li> --%>

@@ -107,13 +107,13 @@
 			<version>0.4</version>
 		</dependency>
 		<!-- zookeeper end -->
-
+<!-- 		分布式session -->
 		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>1.7</version>
+		    <groupId>org.springframework.session</groupId>
+		    <artifactId>spring-session</artifactId>
+		    <version>1.2.1.RELEASE</version>
 		</dependency>
-		
+<!-- 		hash -->
 		<dependency>
 		    <groupId>com.google.guava</groupId>
 		    <artifactId>guava</artifactId>

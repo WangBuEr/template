@@ -1,6 +1,7 @@
 package cn.buer.web.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ public class ShardingController {
 	@Resource
 	private ShardingService splitTableService;
 	@RequestMapping("index")
-	private String index(){
+	private String index(HttpSession session){
 		return "/sharding/index";
 	}
 	@RequestMapping("splitTable")

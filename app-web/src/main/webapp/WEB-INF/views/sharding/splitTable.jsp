@@ -68,8 +68,8 @@
 				
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>
-					<div class="panel panel-default col-sm-10">
-						<div id="searchResultPanel" class="panel-body hide center"></div>
+					<div class="panel panel-default col-sm-10 hide" id="searchResultPanel">
+						<div  class="panel-body hide center"></div>
 					</div>
 				</div>
 			</fieldset>
